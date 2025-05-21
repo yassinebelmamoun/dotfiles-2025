@@ -1,1 +1,72 @@
-/Users/yassinebelmamoun/.config/starship.toml
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+#
+# Main prompt format
+format = """
+$username\
+$hostname\
+$kubernetes\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$python\
+$line_break\
+$time$character"""
+
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+# User configuration
+[username]
+show_always = true
+style_user = "red bold"
+style_root = "red bold"
+format = "[$user]($style) in "
+
+# Path/Directory configuration
+[directory]
+style = "blue bold"
+truncation_length = 4
+truncate_to_repo = true
+truncation_symbol = "…/"
+read_only = " 🔒"
+read_only_style = "red"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+# Time configuration
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "green bold"
+time_format = "%H:%M:%S"
+utc_time_offset = "+7"
+
+# Git configuration
+[git_branch]
+symbol = "📦 "
+truncation_length = 20
+truncation_symbol = "…"
+style = "purple bold"
+format = "on [$symbol$branch]($style) "
+
+# Kubernetes configuration
+[kubernetes]
+format = '[❄️ $context](dimmed green) '
+disabled = false
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+]
+
+# Python configuration
+[python]
+pyenv_version_name = true

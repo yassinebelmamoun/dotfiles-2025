@@ -1,1 +1,15 @@
-/Users/yassinebelmamoun/.gitconfig
+[user]
+	name = Yassine Belmamoun
+	email = belmamoun.yassine@gmail.com
+[core]
+	excludesfile = /Users/yassinebelmamoun/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
