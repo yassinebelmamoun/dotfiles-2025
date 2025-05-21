@@ -1,0 +1,1 @@
+/Users/yassinebelmamoun/.spaceshiprc.zsh
