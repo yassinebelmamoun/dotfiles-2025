@@ -13,7 +13,10 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$git_commit\
 $python\
+$aws\
+$terraform\
 $line_break\
 $time$character"""
 
@@ -26,22 +29,26 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 [package]
 disabled = true
 
+[line_break]
+disabled = false
+
 # User configuration
 [username]
 show_always = true
 style_user = "red bold"
 style_root = "red bold"
-format = "[$user]($style) in "
+format = "[$user]($style) "
+aliases = { "yassinebelmamoun" = "yassine" }
 
 # Path/Directory configuration
 [directory]
 style = "blue bold"
 truncation_length = 4
 truncate_to_repo = true
-truncation_symbol = "…/"
+truncation_symbol = "~"
 read_only = " 🔒"
 read_only_style = "red"
-format = "[$path]($style)[$read_only]($read_only_style) "
+format = "in [$path]($style)[$read_only]($read_only_style) "
 
 # Time configuration
 [time]
@@ -53,20 +60,35 @@ utc_time_offset = "+7"
 
 # Git configuration
 [git_branch]
-symbol = "📦 "
+symbol = " "
 truncation_length = 20
 truncation_symbol = "…"
 style = "purple bold"
 format = "on [$symbol$branch]($style) "
 
+[git_commit]
+tag_symbol = '  '
+
 # Kubernetes configuration
 [kubernetes]
-format = '[❄️ $context](dimmed green) '
+format = 'on ☸ [$context \($namespace\)]($style) '
 disabled = false
+detect_extensions = []
+detect_files = []
+detect_folders = []
+detect_env_vars = ['SHOW_KUBE']
 contexts = [
-  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+  { context_pattern = ".*production.*", style = "bold yellow", symbol = "🟧 " },
+  { context_pattern = ".*staging.*", style = "green", symbol = "🟩 " },
 ]
+
+[aws]
+symbol = " "
 
 # Python configuration
 [python]
 pyenv_version_name = true
+symbol = " "
+
+[terraform]
+format = 'with [🏎💨 $workspace]($style) '

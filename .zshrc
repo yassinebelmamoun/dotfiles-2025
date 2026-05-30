@@ -4,17 +4,8 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# If using starship, disable OMZ theme:
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -41,13 +32,11 @@ ZSH_THEME="random"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -61,9 +50,6 @@ ZSH_THEME="random"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -86,6 +72,10 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Deduplicate PATH entries (zsh feature)
+typeset -U path PATH
+
 
 # User configuration
 
@@ -110,17 +100,43 @@ fi
 # the $ZSH_CUSTOM folder, with .zsh extension. Examples:
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
+
 # For a full list of active aliases, run `alias`.
-#
+# Configure PIPENV to create venv in folder (easy for IDE/neovim)
+export PIPENV_VENV_IN_PROJECT=1
+
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshc="nvim ~/.zshrc"
+alias tmuxc="nvim ~/.tmux.conf"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias repos="cd ~/repos"
+alias manatal="cd ~/repos/manatal-workspace/"
+alias ms="cd ~/repos/manatal-workspace/manatal-services/"
+alias mc="cd ~/repos/manatal-workspace/manatal-config/"
+
+# TODO: Migrate to new path
+alias mgitops="cd ~/repos/manatal-config/gitops-apps-config"
+alias miac="cd ~/repos/manatal-config/gitops-iac-config"
+alias minfra="cd ~/repos/manatal-config/gitops-infra-config"
+
+# Other projects 
+alias postule="cd ~/repos/postule.ma/"
+
+# Alias
+alias export_aws_credentials='eval $(aws configure export-credentials --profile $AWS_PROFILE --format env)'
 
 # Pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+
+# Kubernetes
+# kubectl coloring (fallback cleanly if kubecolor missing)
+if command -v kubecolor >/dev/null 2>&1; then
+  alias kubectl="kubecolor"
+fi
 
 # NVM for Node
 export NVM_DIR="$HOME/.nvm"
@@ -133,7 +149,19 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   # Don't add keys here - let them be added on first use
 fi
 
+# To control display of spaceship kubeconfig
+kube-on() {
+  export SHOW_KUBE=1
+}
+
+kube-off() {
+  unset SHOW_KUBE
+}
 
 # initi starship
 export STARSHIP_CONFIG=~/dotfiles/starship.toml
-eval "$(starship init zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+command -v direnv  >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+# kiro integration guarded
+[[ "$TERM_PROGRAM" == "kiro" ]] && command -v kiro >/dev/null 2>&1 && . "$(kiro --locate-shell-integration-path zsh)"
