@@ -20,6 +20,7 @@ LazyVim-based Neovim configuration managed as a dotfiles repo.
 | `docker.lua` | Docker/Compose support |
 | `terraform.lua` | Terraform language support |
 | `tmux.lua` | vim-tmux-navigator (Ctrl+h/j/k/l pane switching) |
+| `claudecode.lua` | Claude Code CLI integration (`<leader>a` keymaps, WebSocket MCP) |
 
 ## LazyVim extras enabled
 

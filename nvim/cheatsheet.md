@@ -196,6 +196,26 @@ Commands marked with `*` show a service picker first.
 
 ---
 
+## AI Assistant — Claude Code (`<leader>a`)
+
+Claude sees your current file and selection in real-time via WebSocket. Diffs proposed
+by Claude appear as buffers you can accept or deny without leaving Neovim.
+
+| Key          | Action                            |
+| ------------ | --------------------------------- |
+| `<leader>ac` | Toggle Claude terminal            |
+| `<leader>af` | Focus Claude (smart toggle)       |
+| `<leader>ar` | Resume last session               |
+| `<leader>aC` | Continue last session             |
+| `<leader>am` | Select model                      |
+| `<leader>ab` | Add current buffer to context     |
+| `<leader>as` | Send visual selection to Claude   |
+| `<leader>as` | Add file to context (in neo-tree) |
+| `<leader>aa` | Accept Claude's diff              |
+| `<leader>ad` | Deny Claude's diff                |
+
+---
+
 ## Completion (blink.cmp)
 
 | Key                 | Action                |

@@ -20,7 +20,8 @@ nvim/
 │       ├── docker.lua          # Docker Compose workflow keymaps (<leader>D)
 │       ├── neotest.lua         # Neotest with pytest via local .venv
 │       ├── terraform.lua       # Terraform LSP + tflint + tfsec
-│       └── tmux.lua            # Seamless tmux/nvim pane navigation
+│       ├── tmux.lua            # Seamless tmux/nvim pane navigation
+│       └── claudecode.lua      # Claude Code CLI integration (<leader>a)
 ```
 
 ## LazyVim Extras
@@ -106,6 +107,34 @@ Terraform-ls with validation enabled. Mason auto-installs `terraform-ls`, `tflin
 ### Tmux Navigation (`tmux.lua`)
 
 `vim-tmux-navigator` for seamless pane switching between tmux and Neovim using `Ctrl-h/j/k/l`.
+
+## AI Assistant (claudecode.nvim)
+
+`claudecode.nvim` connects Neovim to the Claude Code CLI via the same WebSocket MCP protocol
+used by the official VS Code/JetBrains extensions. Claude sees your current file,
+selections, and diagnostics in real-time.
+
+### Keymaps (`<leader>a`)
+
+| Keymap | Action |
+|---|---|
+| `<leader>ac` | Toggle Claude terminal |
+| `<leader>af` | Focus Claude (smart toggle) |
+| `<leader>ar` | Resume last Claude session |
+| `<leader>aC` | Continue last Claude session |
+| `<leader>am` | Select model |
+| `<leader>ab` | Add current buffer to Claude's context |
+| `<leader>as` | Send visual selection to Claude |
+| `<leader>as` | Add file to context (from neo-tree) |
+| `<leader>aa` | Accept diff proposed by Claude |
+| `<leader>ad` | Deny diff proposed by Claude |
+
+### Workflow
+
+1. Open Claude: `<leader>ac` opens a split terminal running `claude`
+2. Claude sees your file automatically via the MCP protocol
+3. Select code and press `<leader>as` to send it as context
+4. When Claude proposes edits, a diff buffer opens — use `<leader>aa` / `<leader>ad` to accept or reject
 
 ## Prerequisites
 
