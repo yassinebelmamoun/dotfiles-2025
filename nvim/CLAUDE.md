@@ -23,7 +23,7 @@ LazyVim-based Neovim configuration managed as a dotfiles repo.
 
 ## LazyVim extras enabled
 
-python, dap.core, test.core, formatting.prettier, docker, yaml
+python, dap.core, test.core, formatting.prettier, docker, yaml, markdown
 
 ## Conventions
 
