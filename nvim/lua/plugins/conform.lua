@@ -4,12 +4,6 @@
 return {
   "stevearc/conform.nvim",
   opts = {
-    format_on_save = {
-      -- Don't fall back to LSP formatting — ruff handles everything for Python.
-      -- "never" replaces the deprecated lsp_fallback = false.
-      lsp_format = "never",
-      timeout_ms = 500,
-    },
     formatters_by_ft = {
       -- Run ruff_format first (code style), then ruff_fix (auto-fix lint violations).
       -- They run sequentially in order: format -> fix.
