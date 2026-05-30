@@ -68,7 +68,7 @@ plugins=(
   kubectl
   kubectx
   macos
-  vscode
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh

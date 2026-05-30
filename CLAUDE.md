@@ -9,7 +9,7 @@ Personal dotfiles managed via manual symlinks — no symlink manager tool (like 
 Files in this repo are symlinked directly from the home directory:
 
 - `~/.zshrc` → `dotfiles/.zshrc`
-- `~/.tmux.conf` → `dotfiles/.tmux.conf`
+- `~/.tmux.conf` → `dotfiles/tmux/.tmux.conf`
 - `~/.gitconfig` → `dotfiles/.gitconfig`
 - `~/.config/starship.toml` → `dotfiles/starship.toml`
 - `~/.config/kitty/` → `dotfiles/kitty/`
@@ -22,7 +22,7 @@ There are no build/lint/test commands — this is a configuration-only repo.
 | Path               | Purpose                                                     |
 | ------------------ | ----------------------------------------------------------- |
 | `.zshrc`           | Zsh shell config via Oh My Zsh                              |
-| `.tmux.conf`       | Tmux with TPM plugins, prefix remapped to Ctrl-A            |
+| `tmux/`            | Tmux config — see `tmux/README.md` for details              |
 | `.gitconfig`       | Git config with diff-so-fancy, rebase pull, autoSetupRemote |
 | `starship.toml`    | Starship prompt with kubernetes/aws/terraform modules       |
 | `kitty/kitty.conf` | Kitty terminal emulator config                              |
@@ -38,13 +38,14 @@ There are no build/lint/test commands — this is a configuration-only repo.
 - `EDITOR=nvim` for local sessions, `vim` for SSH sessions (detected via `$SSH_CONNECTION`)
 - `kube-on` / `kube-off` aliases toggle the kubernetes module in Starship via `SHOW_KUBE`
 
-### Tmux (`.tmux.conf`)
+### Tmux (`tmux/`)
 
 - Prefix: `Ctrl-A` (not `Ctrl-B`)
 - Smart pane navigation: `Ctrl-H/J/K/L` works across Vim/Neovim splits and tmux panes via vim-tmux-navigator
 - Session management: tmux-sessionx (`<prefix>-O`) with zoxide integration, tmux-resurrect + tmux-continuum for persistence
 - Window splits: `|` for vertical, `-` for horizontal
-- `<prefix>-M` opens `.tmux.conf` in editor; `<prefix>-R` reloads config
+- `<prefix>-M` opens `.tmux.conf` in editor; `<prefix>-r` reloads config
+- See `tmux/cheatsheet.md` for full key binding reference
 
 ### Starship (`starship.toml`)
 
