@@ -1,0 +1,75 @@
+gui:
+  expandFocusedSidePanel: true
+  mainPanelSplitMode: flexible
+  enlargedSideViewLocation: left
+  mouseEvents: true
+  showFileTree: true
+  showListFooter: true
+  showRandomTip: false
+  nerdFontsVersion: "3"
+  border: rounded
+  theme:
+    activeBorderColor:
+      - white
+      - bold
+    inactiveBorderColor:
+      - "#444444"
+    selectedLineBgColor:
+      - "#1a1a1a"
+    cherryPickedCommitBgColor:
+      - "#2a2a2a"
+    cherryPickedCommitFgColor:
+      - white
+    unstagedChangesColor:
+      - "#ff5555"
+git:
+  pagers:
+    - colorArg: always
+      useConfig: false
+      pager: delta --paging=never --line-numbers --syntax-theme=ansi --side-by-side
+  autoFetch: true
+  autoFetchInterval: 300
+  commit:
+    signOff: false
+    autoWrapCommitMessage: true
+    autoWrapWidth: 72
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
+  merging:
+    manualCommit: false
+    args: ""
+  pull:
+    mode: rebase
+  allBranchesLogCmds:
+    - git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --all
+os:
+  editPreset: nvim
+confirmOnQuit: false
+quitOnTopLevelReturn: false
+notARepository: prompt
+keybinding:
+  universal:
+    quit: q
+    quit-alt1: <c-c>
+    return: <esc>
+    openRecentRepos: <c-r>
+    scrollUpMain-alt1: K
+    scrollDownMain-alt1: J
+  commits:
+    squashDown: s
+    rewordCommit: r
+    renameCommit: R
+    amendToCommit: A
+    pickCommit: p
+    revertCommit: t
+    cherryPickCopy: C
+    pasteCommits: V
+    tagCommit: T
+    openLogMenu: <c-l>
+  branches:
+    createPullRequest: o
+    checkoutBranchByName: c
+    rebaseBranch: r
+    mergeIntoCurrentBranch: M
+    fastForward: f
+    pushTag: P
+    setUpstream: u

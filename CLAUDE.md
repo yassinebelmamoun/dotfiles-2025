@@ -14,6 +14,7 @@ Files in this repo are symlinked directly from the home directory:
 - `~/.config/starship.toml` → `dotfiles/starship.toml`
 - `~/.config/kitty/` → `dotfiles/kitty/`
 - `~/.config/nvim/` → `dotfiles/nvim/`
+- `~/Library/Application Support/lazygit/config.yml` → `dotfiles/lazygit/config.yml`
 
 There are no build/lint/test commands — this is a configuration-only repo.
 
@@ -27,6 +28,7 @@ There are no build/lint/test commands — this is a configuration-only repo.
 | `starship.toml`    | Starship prompt with kubernetes/aws/terraform modules       |
 | `kitty/kitty.conf` | Kitty terminal emulator config                              |
 | `nvim/`            | Neovim config — see `nvim/CLAUDE.md` for details            |
+| `lazygit/`         | Lazygit config with delta pager for syntax-highlighted diffs |
 
 ## Key Configuration Details
 
