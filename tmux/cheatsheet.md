@@ -118,3 +118,5 @@ Sessions are auto-saved every 15 minutes and restored on tmux start.
 | `prefix + I`     | Install new plugins listed in config |
 | `prefix + U`     | Update all plugins                   |
 | `prefix + Alt+u` | Remove plugins not in config         |
+
+After removing `tmux-themepack`, run `prefix + Alt+u` once to clean it from the plugins directory.
