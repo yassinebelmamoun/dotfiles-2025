@@ -2,6 +2,9 @@ return {
   "coder/claudecode.nvim",
   opts = {
     terminal = { provider = "none" },
+    diff_opts = {
+      on_new_file_reject = "close_window",
+    },
   },
   keys = {
     { "<leader>a",  nil,                              desc = "AI/Claude Code" },

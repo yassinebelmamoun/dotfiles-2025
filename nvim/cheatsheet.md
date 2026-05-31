@@ -198,15 +198,12 @@ Commands marked with `*` show a service picker first.
 
 ## AI Assistant — Claude Code (`<leader>a`)
 
-Claude sees your current file and selection in real-time via WebSocket. Diffs proposed
-by Claude appear as buffers you can accept or deny without leaving Neovim.
+Claude runs in an external tmux pane (connected via `/ide`). Neovim registers as an MCP
+client so Claude sees your file, selection, and LSP diagnostics in real-time. Diffs
+proposed by Claude appear as buffers you can accept or deny without leaving Neovim.
 
 | Key          | Action                            |
 | ------------ | --------------------------------- |
-| `<leader>ac` | Toggle Claude terminal            |
-| `<leader>af` | Focus Claude (smart toggle)       |
-| `<leader>ar` | Resume last session               |
-| `<leader>aC` | Continue last session             |
 | `<leader>am` | Select model                      |
 | `<leader>ab` | Add current buffer to context     |
 | `<leader>as` | Send visual selection to Claude   |

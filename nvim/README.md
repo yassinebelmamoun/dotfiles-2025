@@ -110,18 +110,18 @@ Terraform-ls with validation enabled. Mason auto-installs `terraform-ls`, `tflin
 
 ## AI Assistant (claudecode.nvim)
 
-`claudecode.nvim` connects Neovim to the Claude Code CLI via the same WebSocket MCP protocol
-used by the official VS Code/JetBrains extensions. Claude sees your current file,
-selections, and diagnostics in real-time.
+`claudecode.nvim` connects Neovim to an external Claude Code session via WebSocket MCP —
+the same protocol used by the official VS Code/JetBrains extensions. Claude runs in a
+tmux pane (not inside Neovim), connected with `/ide` in the Claude Code CLI.
+
+Neovim's terminal provider is set to `none`, so the plugin only acts as an MCP server:
+Claude sees your current file, selections, and LSP diagnostics in real-time without
+opening any terminal split inside Neovim.
 
 ### Keymaps (`<leader>a`)
 
 | Keymap | Action |
 |---|---|
-| `<leader>ac` | Toggle Claude terminal |
-| `<leader>af` | Focus Claude (smart toggle) |
-| `<leader>ar` | Resume last Claude session |
-| `<leader>aC` | Continue last Claude session |
 | `<leader>am` | Select model |
 | `<leader>ab` | Add current buffer to Claude's context |
 | `<leader>as` | Send visual selection to Claude |
@@ -131,7 +131,7 @@ selections, and diagnostics in real-time.
 
 ### Workflow
 
-1. Open Claude: `<leader>ac` opens a split terminal running `claude`
+1. Start Claude Code in a tmux pane and run `/ide` to connect to Neovim
 2. Claude sees your file automatically via the MCP protocol
 3. Select code and press `<leader>as` to send it as context
 4. When Claude proposes edits, a diff buffer opens — use `<leader>aa` / `<leader>ad` to accept or reject
